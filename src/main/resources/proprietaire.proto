@@ -1,0 +1,37 @@
+syntax="proto3";
+option java_package="org.sid.examen.web.grpc.stub";
+message Proprietaire{
+  int64 id=1;
+  string nom=2;
+  int64 dateNaissance=3;
+  string email=4;
+  repeated Vehicule vehicules =5;
+}
+
+message Vehicule{
+  int64 id=1;
+  string numeroMatricule=2;
+  string marque=3;
+  int64 puissanceFiscale=4;
+  string modele=5;
+  Proprietaire proprietaire=6;
+}
+
+message GetProprietaireRequest{
+  int64 id=1;
+}
+
+message GetProprietaireResponse{
+  Proprietaire proprietaire=1;
+}
+
+message GetListProprietaireRequest{}
+
+message GetListProprietaireResponse{
+  repeated Proprietaire Proprietaire=1;
+}
+
+service ProprietaireService{
+  rpc getProprietaire(GetProprietaireRequest) returns (GetProprietaireResponse);
+  rpc getListProprietaire(GetListProprietaireRequest) returns (GetListProprietaireResponse);
+}

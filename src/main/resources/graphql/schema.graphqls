@@ -1,0 +1,35 @@
+type Query{
+    proprietaires : [Proprietaire],
+    proprietaireById(id:Int) : Proprietaire,
+    vehicules : [Vehicule],
+    vehiculeById(id:Int) : Vehicule
+}
+type Mutation {
+    saveProprietaire(proprietaire:ProprietaireRequest):Proprietaire
+}
+
+
+type Proprietaire {
+        id : Int,
+        nom : String,
+        dateNaissance : String,
+        email : String,
+        vehicules : [Vehicule]
+}
+
+type Vehicule {
+    id : Int,
+    numeroMatricule : String,
+    marque : String,
+    puissanceFiscale : Int,
+    modele : String,
+    proprietaire : Proprietaire
+}
+
+
+input ProprietaireRequest{
+            nom : String,
+            dateNaissance : String,
+            email : String
+}
+
